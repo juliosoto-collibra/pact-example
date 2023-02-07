@@ -23,13 +23,17 @@ describe('Pact Verification', () => {
       consumerVersionSelectors: [
         { consumer: 'Usage Analytics Frontend', branch: 'main' },
       ],
-      // pactUrls: [path.resolve(__dirname, '../../../consumer/pacts')],
-      pactBrokerUrl: process.env.PACT_BROKER_BASE_URL || 'invalid_url',
-      pactBrokerToken: process.env.PACT_BROKER_TOKEN || 'invalid_token',
+      pactUrls: [path.resolve(__dirname, '../../../consumer/pacts')],
+      // pactBrokerUrl: process.env.PACT_BROKER_BASE_URL || 'invalid_url',
+      // pactBrokerToken: process.env.PACT_BROKER_TOKEN || 'invalid_token',
       stateHandlers: {
-        'visitors exist': async () => {
+        '1 visitor exists': async () => {
           setEmptyVisitorsDB(false);
-          Promise.resolve('Visitors in db');
+          Promise.resolve('2 Visitors in db');
+        },
+        '3 visitors exist': async () => {
+          setEmptyVisitorsDB(false);
+          Promise.resolve('2 Visitors in db');
         },
         'no visitors': async () => {
           setEmptyVisitorsDB(true);
